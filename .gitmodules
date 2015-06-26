@@ -1,3 +1,7 @@
 [submodule "switch01"]
 	path = switch01
 	url = https://github.com/cmmakerclub/switch-mqtt
+
+[submodule "mqttws-simple"]
+	path = mqttws-simple
+	url = /Users/NAzT/cmmakerclub.io/mqttws-simple
