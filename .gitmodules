@@ -4,4 +4,4 @@
 
 [submodule "mqttws-simple"]
 	path = mqttws-simple
-	url = /Users/NAzT/cmmakerclub.io/mqttws-simple
+	url = https://github.com/NAzT/mqttws-simple.git
