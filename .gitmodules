@@ -5,9 +5,3 @@
 [submodule "mqttws-simple"]
 	path = mqttws-simple
 	url = https://github.com/NAzT/mqttws-simple.git
-[submodule "untitled folder"]
-	path = untitled folder
-	url = git@github.com:cmmakerclub/test-repo.git
-[submodule "pixy"]
-	path = pixy
-	url = git@github.com:cmmakerclub/Arduino-Pixy.git
