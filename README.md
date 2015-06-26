@@ -1,3 +1,3 @@
 # cmmakerclub.github.io
 
-a shared-site of cmmc member.
+[http://cmmakerclub.github.io](http://cmmakerclub.github.io);
