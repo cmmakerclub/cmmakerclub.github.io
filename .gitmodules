@@ -7,4 +7,4 @@
 	url = https://github.com/NAzT/mqttws-simple.git
 [submodule "cmmc-mqttws"]
 	path = cmmc-mqttws
-	url = git@github.com:NAzT/cmmc-mqttws.git
+	url = https://github.com/NAzT/cmmc-mqttws.git
