@@ -8,6 +8,3 @@
 [submodule "cmmc-mqttws"]
 	path = cmmc-mqttws
 	url = https://github.com/NAzT/cmmc-mqttws.git
-[submodule "angular-mqtt-ws"]
-	path = angular-mqtt-ws
-	url = git@github.com:cmmakerclub/angular-mqtt-ws.git
