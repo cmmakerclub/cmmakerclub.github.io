@@ -10,4 +10,4 @@
 	url = https://github.com/NAzT/cmmc-mqttws.git
 [submodule "gulp-angular-mqtt-ws"]
 	path = gulp-angular-mqtt-ws
-	url = git@github.com:NAzT/gulp-angular-mqtt-ws.git
+	url = https://github.com:NAzT/gulp-angular-mqtt-ws.git
