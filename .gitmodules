@@ -1,3 +1,6 @@
 [submodule "cmmc-devices"]
 	path = cmmc-devices
 	url = https://github.com/cmmakerclub/cmmc-devices.git
+[submodule "netpie-manager"]
+	path = netpie-manager
+	url = https://github.com/cmmakerclub/netpie-manager.git
