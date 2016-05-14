@@ -1,6 +1,3 @@
-[submodule "cmmc-devices"]
-	path = cmmc-devices
-	url = https://github.com/cmmakerclub/cmmc-devices.git
 [submodule "netpie-manager"]
 	path = color-wheel-mqtt
 	url = https://github.com/cmmakerclub/color-wheel-mqtt.git
