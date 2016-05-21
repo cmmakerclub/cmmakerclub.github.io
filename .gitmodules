@@ -1,3 +1,6 @@
 [submodule "color-wheel-mqtt"]
 	path = color-wheel-mqtt
 	url = https://github.com/cmmakerclub/color-wheel-mqtt
+[submodule "netpie-manager"]
+	path = netpie-manager
+	url = ./netpie-manager
