@@ -6,3 +6,5 @@ cd ..
 git commit -am "update submodule"
 git pull --rebase;
 git push -u origin master
+
+rsync -avz color-wheel-mqtt root@cmmc.xyz:/var/www/html/
