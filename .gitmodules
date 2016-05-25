@@ -4,3 +4,6 @@
 [submodule "netpie-manager"]
 	path = netpie-manager
 	url = https://github.com/cmmakerclub/netpie-manager
+[submodule "pub-sub-minimal"]
+	path = pub-sub-minimal
+	url = https://github.com/cmmakerclub/pub-sub-minimal.git
