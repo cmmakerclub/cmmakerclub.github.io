@@ -7,3 +7,6 @@
 [submodule "pub-sub-minimal"]
 	path = pub-sub-minimal
 	url = https://github.com/cmmakerclub/pub-sub-minimal.git
+[submodule "src/netpie-client-basic"]
+	path = src/netpie-client-basic
+	url = git@github.com:cmmakerclub/netpie-client-basic.git
