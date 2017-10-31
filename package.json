@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepush": "npm run build",
-    "build": "./build.sh",
+    "build": "bash ./build.sh",
     "test": "echo \"Error: no test specified\" && exit 1" 
   },
   "repository": {
