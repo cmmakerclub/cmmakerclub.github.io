@@ -1,3 +1,3 @@
 # cmmakerclub.github.io
 
-[https://cmmakerclub.com](https://cmmakerclub.com);
+[https://cmmakerclub.github.io](https://cmmakerclub.github.io);
