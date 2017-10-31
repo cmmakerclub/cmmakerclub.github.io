@@ -1,6 +1,6 @@
 [submodule "src/netpie-client-basic"]
 	path = src/netpie-client-basic
 	url = https://github.com/cmmakerclub/netpie-client-basic.git
-[submodule "hivemq-mqtt-web-client"]
-	path = hivemq-mqtt-web-client
+[submodule "src/hivemq-mqtt-web-client"]
+	path = src/hivemq-mqtt-web-client
 	url = https://github.com/cmmakerclub/hivemq-mqtt-web-client
