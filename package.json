@@ -4,7 +4,8 @@
   "description": "[https://cmmakerclub.github.io](https://cmmakerclub.github.io);",
   "main": "index.js",
   "scripts": {
-    "precommit": "npm run test",
+    "precommit": "npm run build",
+    "build": "./build.sh",
     "test": "echo \"Error: no test specified\" && exit 1" 
   },
   "repository": {
