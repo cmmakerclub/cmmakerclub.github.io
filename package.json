@@ -1,0 +1,23 @@
+{
+  "name": "cmmakerclub.github.io",
+  "version": "1.0.0",
+  "description": "[https://cmmakerclub.github.io](https://cmmakerclub.github.io);",
+  "main": "index.js",
+  "scripts": {
+    "precommit": "npm run test",
+    "test": "echo \"Error: no test specified\" && exit 1" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://nazt@github.com/cmmakerclub/cmmakerclub.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cmmakerclub/cmmakerclub.github.io/issues"
+  },
+  "homepage": "https://github.com/cmmakerclub/cmmakerclub.github.io#readme",
+  "devDependencies": {
+    "husky": "^0.14.3"
+  }
+}
