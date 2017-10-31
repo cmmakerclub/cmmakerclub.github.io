@@ -1,5 +1,5 @@
 #!/bin/bash
 
 rsync --delete -av src/netpie-client-basic/ netpie/client/ 
-git add  -am 'update static files' 
+git commit -am 'update static files' 
 
