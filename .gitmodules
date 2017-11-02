@@ -7,3 +7,6 @@
 [submodule "src/react-mqtt-topology"]
 	path = src/react-mqtt-topology
 	url = https://github.com/cmmakerclub/react-mqtt-topology.git
+[submodule "src/espnow-sensor-node-graph"]
+	path = src/espnow-sensor-node-graph
+	url = https://github.com/cmmakerclub/espnow-sensor-node-graph.git
