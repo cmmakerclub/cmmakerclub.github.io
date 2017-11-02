@@ -4,9 +4,6 @@
 [submodule "src/hivemq-mqtt-web-client"]
 	path = src/hivemq-mqtt-web-client
 	url = https://github.com/cmmakerclub/hivemq-mqtt-web-client
-[submodule "src/react-mqtt-topology"]
-	path = src/react-mqtt-topology
-	url = https://github.com/cmmakerclub/react-mqtt-topology.git
-[submodule "src/react-dashboard-netpie"]
-	path = src/react-dashboard-netpie
-	url = https://github.com/compilerexe/cmmakerclub.github.io.git
+[submodule "src/espnow-sensor-node-graph"]
+	path = src/espnow-sensor-node-graph
+	url = https://github.com/cmmakerclub/espnow-sensor-node-graph.git
