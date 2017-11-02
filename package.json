@@ -4,7 +4,6 @@
   "description": "[https://cmmakerclub.github.io](https://cmmakerclub.github.io);",
   "main": "index.js",
   "scripts": {
-    "prepush": "npm run build",
     "build": "bash ./build.sh"
   },
   "repository": {
