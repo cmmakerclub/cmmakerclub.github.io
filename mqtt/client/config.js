@@ -1,2 +1,2 @@
-websocketserver = 'mqtt.cmmc.io';
+websocketserver = 'odin.cmmc.io';
 websocketport = 9001;
