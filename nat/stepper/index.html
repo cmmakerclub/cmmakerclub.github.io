@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="mqttws31.js"></script>
+    <script type="text/javascript">
+    function onConnect() {
+        console.log("onConnect");
+    }
+
+    function publish_message(step) {
+        var payload = String(step);
+        var message = new Paho.MQTT.Message(payload); message.destinationName = "stepper";
+        client.send(message);
+    }
+      $(document).ready(function() {
+      $("#mqtt_pub-fwd").click(function() { 
+        publish_message($('#mqtt_text').val())
+      })
+      $("#mqtt_pub-bwd").click(function() { 
+        publish_message($('#mqtt_text').val()*-1)
+      })
+      window.client = new Paho.MQTT.Client('odin.cmmc.io', 9001, "clientId"+Math.random()); 
+      window.client.connect({onSuccess:onConnect, userName: 'maru', password: 'theboss'});
+      });
+    </script>
+  </head>
+  <body>
+  <div>
+    <input type="text" id="mqtt_text" value=100 /> steps
+    <div>
+      <button id="mqtt_pub-fwd">Forward</button>
+      <button id="mqtt_pub-bwd">Backward</button>
+    </div>
+  </div>
+    <!-- page content -->
+  </body>
+</html>
