@@ -75,7 +75,6 @@
 
           var image = {
             url: './54324.png',
-            origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(12, 12),
             size: new google.maps.Size(24, 24),
           }
@@ -86,7 +85,6 @@
             var marker = new google.maps.Marker({
               position: location,
               icon: image,
-              // label: location.markerName
             })
             marker.addListener('click', function () {
               infowindow.open(map, marker)
