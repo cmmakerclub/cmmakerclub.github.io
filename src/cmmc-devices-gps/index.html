@@ -37,22 +37,18 @@
       center: new google.maps.LatLng(7.924533332999999, 98.37156)
     })
 
-    var infowindow = new google.maps.InfoWindow()
+    if (locations.length > 0) {
 
-    var marker, i
+      var markers = locations.map(function (location, i) {
 
-    for (i = 0; i < locations.length; i++) {
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map
+        return new google.maps.Marker({
+          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+          label: locations[i][0]
+        })
       })
 
-      google.maps.event.addListener(marker, 'click', (function (marker, i) {
-        return function () {
-          infowindow.setContent(locations[i][0])
-          infowindow.open(map, marker)
-        }
-      })(marker, i))
+      var markerCluster = new MarkerClusterer(map, markers,
+        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'})
     }
 
   }
@@ -93,7 +89,6 @@
     var d = JSON.parse(message.payloadString)
     var deviceName = d.linkit
     locations.push([deviceName.substr(-4), d.gps_latitude, d.gps_longitude])
-    //console.log(d.linkit.substr(-4))
     _.uniq(locations, function (device) {
       return device[0]
     })
@@ -101,6 +96,8 @@
   }
 </script>
 
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+</script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvghnsRUrMhoVlgnTCGkG3WB0nZibaxzE&callback=initMap">
 </script>
