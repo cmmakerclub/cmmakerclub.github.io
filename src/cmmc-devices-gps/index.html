@@ -39,9 +39,7 @@
     })
 
     if (locations.length > 0) {
-
       markers = locations.map(function (location, i) {
-
         return new google.maps.Marker({
           position: new google.maps.LatLng(locations[i][1], locations[i][2]),
           label: locations[i][0]
@@ -54,20 +52,17 @@
 
   }
 
-  const init = {
+  const mqtt = {
     hostname: 'mqtt.cmmc.io',
     port: 9001,
     path: '',
     clientId: String(Math.random() * 100)
   }
 
-  const options = {useSSL: false, onSuccess: onConnect}
-
-  const client = new Paho.MQTT.Client(init.hostname, init.port, init.path, init.clientId)
-
+  const client = new Paho.MQTT.Client(mqtt.hostname, mqtt.port, mqtt.path, mqtt.clientId)
   client.onConnectionLost = onConnectionLost
   client.onMessageArrived = onMessageArrived
-  client.connect(options)
+  client.connect({useSSL: false, onSuccess: onConnect})
 
   function onConnect () {
     console.log('mqtt connection ok.')
