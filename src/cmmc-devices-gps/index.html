@@ -54,16 +54,16 @@
   }
 
   const init = {
-    hostname: 'odin.cmmc.io',
+    hostname: 'mqtt.cmmc.io',
     port: 9001,
     path: '',
     clientId: String(Math.random() * 100)
   }
 
   const options = {
-    //useSSL: true,
-    userName: 'cmmc',
-    password: 'cmmc',
+    useSSL: false,
+    userName: '',
+    password: '',
     onSuccess: onConnect
   }
 
