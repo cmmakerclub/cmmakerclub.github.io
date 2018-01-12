@@ -91,10 +91,11 @@
 
   function onMessageArrived (message) {
     var d = JSON.parse(message.payloadString)
-    locations.push([d.linkit.substr(-4), d.gps_latitude, d.gps_longitude])
+    var deviceName = d.linkit
+    locations.push([deviceName.substr(-4), d.gps_latitude, d.gps_longitude])
     //console.log(d.linkit.substr(-4))
     _.uniq(locations, function (device) {
-      return device.linkit.substr(-4)
+      return device[0]
     })
     initMap()
   }
