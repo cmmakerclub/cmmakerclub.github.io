@@ -60,12 +60,7 @@
     clientId: String(Math.random() * 100)
   }
 
-  const options = {
-    useSSL: false,
-    userName: '',
-    password: '',
-    onSuccess: onConnect
-  }
+  const options = {useSSL: false, onSuccess: onConnect}
 
   const client = new Paho.MQTT.Client(init.hostname, init.port, init.path, init.clientId)
 
@@ -75,11 +70,12 @@
   client.connect(options)
 
   function onConnect () {
-    //console.log('onConnect')
+    console.log('mqtt connection ok.')
     client.subscribe('retain/WORK/TRAFFY_V3/TEST/#')
   }
 
   function onConnectionLost (responseObject) {
+    console.log('connection lost...')
     if (responseObject.errorCode !== 0) {
       console.log('onConnectionLost:' + responseObject.errorMessage)
     }
