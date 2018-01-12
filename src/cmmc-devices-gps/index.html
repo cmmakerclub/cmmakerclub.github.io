@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Simple markers</title>
+    <title>CMMC Devices GPS</title>
     <style>
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
@@ -27,17 +26,7 @@
 
 <script type="text/javascript">
 
-  // var myLatLng = {lat: 7.924533332999999, lng: 98.37156}
-
   var locations = []
-
-  // var locations = [
-  //   ['Bondi Beach', -33.890542, 151.274856, 4],
-  //   ['Coogee Beach', -33.923036, 151.259052, 5],
-  //   ['Cronulla Beach', -34.028249, 151.157507, 3],
-  //   ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-  //   ['Maroubra Beach', -33.950198, 151.259302, 1]
-  // ];
 
   function initMap () {
 
@@ -99,20 +88,9 @@
   }
 
   function onMessageArrived (message) {
-
     var d = JSON.parse(message.payloadString)
-
-    // devices.push({
-    //   lat: d.gps_latitude,
-    //   lng: d.gps_longitude
-    // })
-
     locations.push([d.uuid.substr(-4), d.gps_latitude, d.gps_longitude])
-
     initMap()
-
-    // console.log(devices)
-
   }
 </script>
 
@@ -121,6 +99,3 @@
 </script>
 </body>
 </html>
-=======
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name="theme-color" content="#000000"><link rel="manifest" href="/manifest.json"><link rel="shortcut icon" href="/favicon.ico"><title>CMMC Devices GPS</title><link href="static/css/main.16466dad.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script type="text/javascript" src="static/js/main.383a06ed.js"></script></body></html>
->>>>>>> 773b9227ba63f0fa91d2832e54e7921825c493ec
