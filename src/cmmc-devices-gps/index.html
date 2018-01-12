@@ -31,7 +31,8 @@
   var locations = []
 
   function initMap () {
-
+    var markers
+    var markerClusterer
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 12,
       center: new google.maps.LatLng(7.924533332999999, 98.37156)
@@ -39,7 +40,7 @@
 
     if (locations.length > 0) {
 
-      var markers = locations.map(function (location, i) {
+      markers = locations.map(function (location, i) {
 
         return new google.maps.Marker({
           position: new google.maps.LatLng(locations[i][1], locations[i][2]),
@@ -47,7 +48,7 @@
         })
       })
 
-      var markerCluster = new MarkerClusterer(map, markers,
+      markerClusterer = new MarkerClusterer(map, markers,
         {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'})
     }
 
@@ -66,7 +67,6 @@
 
   client.onConnectionLost = onConnectionLost
   client.onMessageArrived = onMessageArrived
-  //client.connect({onSuccess: onConnect})
   client.connect(options)
 
   function onConnect () {
