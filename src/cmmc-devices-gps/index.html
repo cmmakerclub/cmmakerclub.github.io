@@ -20,6 +20,8 @@
     </style>
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 </head>
 <body>
 <div id="map"></div>
@@ -35,22 +37,22 @@
       center: new google.maps.LatLng(7.924533332999999, 98.37156)
     })
 
-    var infowindow = new google.maps.InfoWindow();
+    var infowindow = new google.maps.InfoWindow()
 
-    var marker, i;
+    var marker, i
 
     for (i = 0; i < locations.length; i++) {
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
         map: map
-      });
+      })
 
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
+      google.maps.event.addListener(marker, 'click', (function (marker, i) {
+        return function () {
+          infowindow.setContent(locations[i][0])
+          infowindow.open(map, marker)
         }
-      })(marker, i));
+      })(marker, i))
     }
 
   }
@@ -89,7 +91,11 @@
 
   function onMessageArrived (message) {
     var d = JSON.parse(message.payloadString)
-    locations.push([d.uuid.substr(-4), d.gps_latitude, d.gps_longitude])
+    locations.push([d.linkit.substr(-4), d.gps_latitude, d.gps_longitude])
+    //console.log(d.linkit.substr(-4))
+    _.uniq(locations, function (device) {
+      return device.linkit.substr(-4)
+    })
     initMap()
   }
 </script>
