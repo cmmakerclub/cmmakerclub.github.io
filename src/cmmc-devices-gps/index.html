@@ -1,1 +1,122 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name="theme-color" content="#000000"><link rel="manifest" href="/manifest.json"><link rel="shortcut icon" href="/favicon.ico"><title>React App</title><link href="static/css/main.16466dad.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script type="text/javascript" src="static/js/main.383a06ed.js"></script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js"></script>
+</head>
+<body>
+<div id="map"></div>
+
+<script type="text/javascript">
+
+  // var myLatLng = {lat: 7.924533332999999, lng: 98.37156}
+
+  var locations = []
+
+  // var locations = [
+  //   ['Bondi Beach', -33.890542, 151.274856, 4],
+  //   ['Coogee Beach', -33.923036, 151.259052, 5],
+  //   ['Cronulla Beach', -34.028249, 151.157507, 3],
+  //   ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+  //   ['Maroubra Beach', -33.950198, 151.259302, 1]
+  // ];
+
+  function initMap () {
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: new google.maps.LatLng(7.924533332999999, 98.37156)
+    })
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+
+  }
+
+  const init = {
+    hostname: 'odin.cmmc.io',
+    port: 9001,
+    path: '',
+    clientId: String(Math.random() * 100)
+  }
+
+  const options = {
+    //useSSL: true,
+    userName: 'cmmc',
+    password: 'cmmc',
+    onSuccess: onConnect
+  }
+
+  const client = new Paho.MQTT.Client(init.hostname, init.port, init.path, init.clientId)
+
+  client.onConnectionLost = onConnectionLost
+  client.onMessageArrived = onMessageArrived
+  //client.connect({onSuccess: onConnect})
+  client.connect(options)
+
+  function onConnect () {
+    //console.log('onConnect')
+    client.subscribe('retain/WORK/TRAFFY_V3/TEST/#')
+  }
+
+  function onConnectionLost (responseObject) {
+    if (responseObject.errorCode !== 0) {
+      console.log('onConnectionLost:' + responseObject.errorMessage)
+    }
+  }
+
+  function onMessageArrived (message) {
+
+    var d = JSON.parse(message.payloadString)
+
+    // devices.push({
+    //   lat: d.gps_latitude,
+    //   lng: d.gps_longitude
+    // })
+
+    locations.push([d.uuid.substr(-4), d.gps_latitude, d.gps_longitude])
+
+    initMap()
+
+    // console.log(devices)
+
+  }
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvghnsRUrMhoVlgnTCGkG3WB0nZibaxzE&callback=initMap">
+</script>
+</body>
+</html>
