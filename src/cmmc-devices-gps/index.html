@@ -62,37 +62,32 @@
       function onMessageArrived (message) {
         var d = JSON.parse(message.payloadString)
         var deviceName = d.linkit
+        var markers
+        var markerClusterer
+        var image = {
+          url: './54324.png',
+          anchor: new google.maps.Point(12, 12),
+          size: new google.maps.Size(24, 24),
+        }
 
         if (window.location[deviceName]) {
           // do nothing
-
         } else {
           window.locations[deviceName] = {
             markerName: deviceName.substr(-4),
             lat: d.gps_latitude,
             lng: d.gps_longitude
           }
-
-          var image = {
-            url: './54324.png',
-            anchor: new google.maps.Point(12, 12),
-            size: new google.maps.Size(24, 24),
-          }
-          var markers = _.values(window.locations).map(function (location, i) {
-            var infowindow = new google.maps.InfoWindow({
-              content: '<div>' + location.markerName + '</div>'
-            })
-            var marker = new google.maps.Marker({
-              position: location,
-              icon: image,
-            })
-            marker.addListener('click', function () {
-              infowindow.open(map, marker)
-            })
+          markers = _.values(window.locations).map(function (location, i) {
+            var infowindow
+            var marker
+            info = new google.maps.InfoWindow({content: '<div>' + location.markerName + '</div>'})
+            marker = new google.maps.Marker({position: location, icon: image,})
+            marker.addListener('click', function () { infowindow.open(map, marker) })
             return marker
           })
 
-          new MarkerClusterer(map, markers, {
+          markerClusterer = new MarkerClusterer(map, markers, {
             imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
           })
         }
