@@ -9,4 +9,4 @@
 	url = https://github.com/cmmakerclub/espnow-sensor-node-graph.git
 [submodule "src/cmmc-iot-devices-v2"]
 	path = src/cmmc-iot-devices-v2
-	url = https://github.com/cmmakerclub/cmmc-iot-devices-v2
+	url = https://github.com/cmmakerclub/cmmc-iot-devices-v2.git
