@@ -4,9 +4,6 @@
 [submodule "src/hivemq-mqtt-web-client"]
 	path = src/hivemq-mqtt-web-client
 	url = https://github.com/cmmakerclub/hivemq-mqtt-web-client
-[submodule "src/cmmc-iot-devices-v2"]
-	path = src/cmmc-iot-devices-v2
-	url = https://github.com/cmmakerclub/cmmc-iot-devices-v2.git
 [submodule "src/espnow-sensor-node-graph"]
 	path = src/espnow-sensor-node-graph
 	url = https://github.com/cmmakerclub/espnow-sensor-node-graph.git
