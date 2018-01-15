@@ -22,84 +22,88 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js"></script>
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+    <script type="text/javascript">
+      window.locations = {}
+      window.map = null
+
+      function initMap () {
+        var markerClusterer
+        window.map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: new google.maps.LatLng(7.924533332999999, 98.37156)
+        })
+      }
+
+      const mqtt = {
+        hostname: 'mqtt.cmmc.io',
+        port: 9001,
+        path: '/mqttws',
+        clientId: String(Math.random() * 100)
+      }
+
+      const client = new Paho.MQTT.Client(mqtt.hostname, mqtt.port, mqtt.path, mqtt.clientId)
+      client.onConnectionLost = onConnectionLost
+      client.onMessageArrived = onMessageArrived
+      client.connect({useSSL: false, onSuccess: onConnect})
+
+      function onConnect () {
+        console.log('mqtt connection ok.')
+        client.subscribe('retain/WORK/TRAFFY_V3/TEST/#')
+      }
+
+      function onConnectionLost (responseObject) {
+        console.log('connection lost...')
+        if (responseObject.errorCode !== 0) {
+          console.log('onConnectionLost:' + responseObject.errorMessage)
+        }
+      }
+
+      function onMessageArrived (message) {
+        var d = JSON.parse(message.payloadString)
+        var deviceName = d.linkit
+        var markers
+        var markerClusterer
+        var image = {
+          url: './54324.png',
+          anchor: new google.maps.Point(12, 12),
+          size: new google.maps.Size(24, 24),
+        }
+
+        if (window.location[deviceName]) {
+          // do nothing
+        } else {
+          window.locations[deviceName] = {
+            markerName: deviceName.substr(-4),
+            lat: d.gps_latitude,
+            lng: d.gps_longitude
+          }
+          markers = _.values(window.locations).map(function (location, i) {
+            var infowindow
+            var marker
+            info = new google.maps.InfoWindow({content: '<div>' + location.markerName + '</div>'})
+            marker = new google.maps.Marker({position: location, icon: image,})
+            marker.addListener('click', function () { infowindow.open(map, marker) })
+            return marker
+          })
+
+          markerClusterer = new MarkerClusterer(map, markers, {
+            imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+          })
+        }
+      }
+
+      window.onload = function () {
+        console.log('window .onload')
+      }
+
+    </script>
 </head>
 <body>
 <div id="map"></div>
 
-<script type="text/javascript">
-
-  var locations = []
-
-  function initMap () {
-
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 12,
-      center: new google.maps.LatLng(7.924533332999999, 98.37156)
-    })
-
-    if (locations.length > 0) {
-
-      var markers = locations.map(function (location, i) {
-
-        return new google.maps.Marker({
-          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-          label: locations[i][0]
-        })
-      })
-
-      var markerCluster = new MarkerClusterer(map, markers,
-        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'})
-    }
-
-  }
-
-  const init = {
-    hostname: 'odin.cmmc.io',
-    port: 9001,
-    path: '',
-    clientId: String(Math.random() * 100)
-  }
-
-  const options = {
-    //useSSL: true,
-    userName: 'cmmc',
-    password: 'cmmc',
-    onSuccess: onConnect
-  }
-
-  const client = new Paho.MQTT.Client(init.hostname, init.port, init.path, init.clientId)
-
-  client.onConnectionLost = onConnectionLost
-  client.onMessageArrived = onMessageArrived
-  //client.connect({onSuccess: onConnect})
-  client.connect(options)
-
-  function onConnect () {
-    //console.log('onConnect')
-    client.subscribe('retain/WORK/TRAFFY_V3/TEST/#')
-  }
-
-  function onConnectionLost (responseObject) {
-    if (responseObject.errorCode !== 0) {
-      console.log('onConnectionLost:' + responseObject.errorMessage)
-    }
-  }
-
-  function onMessageArrived (message) {
-    var d = JSON.parse(message.payloadString)
-    var deviceName = d.linkit
-    locations.push([deviceName.substr(-4), d.gps_latitude, d.gps_longitude])
-    _.uniq(locations, function (device) {
-      return device[0]
-    })
-    initMap()
-  }
-</script>
-
-<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
-</script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvghnsRUrMhoVlgnTCGkG3WB0nZibaxzE&callback=initMap">
-</script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvghnsRUrMhoVlgnTCGkG3WB0nZibaxzE&callback=initMap"></script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 </body>
 </html>
