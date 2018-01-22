@@ -10,3 +10,6 @@
 [submodule "src/cmmc-iot-devices-v2"]
 	path = src/cmmc-iot-devices-v2
 	url = https://github.com/cmmakerclub/cmmc-iot-devices-v2.git
+[submodule "src/cmmc-retain-manager"]
+	path = src/cmmc-retain-manager
+	url = https://github.com/cmmakerclub/cmmc-retain-manager.git
