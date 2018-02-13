@@ -16,3 +16,6 @@
 [submodule "src/cmmc-iot-devices-v3"]
 	path = src/cmmc-iot-devices-v3
 	url = https://github.com/cmmakerclub/cmmc-iot-devices-v3.git
+[submodule "src/cmmc-firebase-map"]
+	path = src/cmmc-firebase-map
+	url = https://github.com/compilerexe/cmmc-firebase-map.git
