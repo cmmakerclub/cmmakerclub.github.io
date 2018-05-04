@@ -13,9 +13,9 @@
 [submodule "src/cmmc-retain-manager"]
 	path = src/cmmc-retain-manager
 	url = https://github.com/cmmakerclub/cmmc-retain-manager.git
-[submodule "src/cmmc-iot-devices-v3"]
-	path = src/cmmc-iot-devices-v3
-	url = https://github.com/cmmakerclub/cmmc-iot-devices-v3.git
 [submodule "src/cmmc-firebase-map"]
 	path = src/cmmc-firebase-map
 	url = https://github.com/compilerexe/cmmc-firebase-map.git
+[submodule "src/mqtt-devices"]
+	path = src/mqtt-devices
+	url = https://github.com/cmmakerclub/mqtt-devices.git
