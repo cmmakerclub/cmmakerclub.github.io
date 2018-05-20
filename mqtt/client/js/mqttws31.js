@@ -136,7 +136,6 @@ Messaging = (function (global) {
             }
         }
     };
-
     /**
      * Return a new function which runs the user function bound
      * to a fixed scope.
