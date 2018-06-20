@@ -19,6 +19,3 @@
 [submodule "src/mqtt-devices"]
 	path = src/mqtt-devices
 	url = https://github.com/cmmakerclub/mqtt-devices.git
-[submodule "mqtt/devices"]
-	path = mqtt/devices
-	url = https://github.com/cmmakerclub/mqtt-devices
