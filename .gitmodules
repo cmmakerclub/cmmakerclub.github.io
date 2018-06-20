@@ -16,6 +16,3 @@
 [submodule "src/cmmc-firebase-map"]
 	path = src/cmmc-firebase-map
 	url = https://github.com/compilerexe/cmmc-firebase-map.git
-[submodule "src/mqtt-devices"]
-	path = src/mqtt-devices
-	url = https://github.com/cmmakerclub/mqtt-devices.git
