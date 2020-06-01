@@ -13,3 +13,6 @@
 [submodule "src/mqtt-devices"]
 	path = src/mqtt-devices
 	url = https://github.com/cmmakerclub/mqtt-devices.git
+[submodule "src/vue-iot-devices-color-picker"]
+	path = src/vue-iot-devices-color-picker
+	url = https://github.com/cmmakerclub/vue-iot-devices-color-picker
