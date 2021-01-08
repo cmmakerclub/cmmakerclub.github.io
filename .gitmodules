@@ -16,3 +16,6 @@
 [submodule "src/vue-iot-devices-color-picker"]
 	path = src/vue-iot-devices-color-picker
 	url = https://github.com/cmmakerclub/vue-iot-devices-color-picker
+[submodule "src/kb32ft"]
+	path = src/kb32ft
+	url = /Users/prawared/makerasia/vue-iot-devices
