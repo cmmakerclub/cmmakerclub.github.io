@@ -21,4 +21,4 @@
 	url = /Users/prawared/makerasia/vue-iot-devices
 [submodule "src/mqtt-kb32ft"]
 	path = src/mqtt-kb32ft
-	url = /Users/prawared/makerasia/vue-iot-devices
+url=https://github.com/Gr4vity4/vue-iot-devices.git
