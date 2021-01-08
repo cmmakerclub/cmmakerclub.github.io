@@ -19,3 +19,6 @@
 [submodule "src/kb32ft"]
 	path = src/kb32ft
 	url = /Users/prawared/makerasia/vue-iot-devices
+[submodule "src/mqtt-kb32ft"]
+	path = src/mqtt-kb32ft
+	url = /Users/prawared/makerasia/vue-iot-devices
